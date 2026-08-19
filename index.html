@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STACKEDHQ Health Advisory — Clear guidance for your healthcare decisions</title>
+<meta name="description" content="STACKEDHQ Health Advisory helps individuals and families navigate care options, second opinions, and health plans." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top">STACKEDHQ <span>Health Advisory</span></a>
+    <nav class="site-nav">
+      <a href="#how-we-help">How we help</a>
+      <a href="#consultation" class="nav-cta">Book a consultation</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">Stackedhq Health Advisory</p>
+      <h1>Clear guidance for your next healthcare decision.</h1>
+      <p class="hero-sub">We help individuals and families navigate care options, second opinions, and health plans — in plain language, with no pressure.</p>
+      <a href="#consultation" class="btn btn-primary">Book a consultation</a>
+    </div>
+    <div class="hero-chart reveal" aria-hidden="true">
+      <div class="chart-lines"></div>
+      <ul class="chart-tags">
+        <li>Care navigation</li>
+        <li>Second opinions</li>
+        <li>Health plan guidance</li>
+        <li>Specialist referrals</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="how-we-help" class="services wrap reveal">
+    <p class="eyebrow">How we help</p>
+    <h2>Three ways we support your care</h2>
+    <div class="service-grid">
+      <article class="service-card">
+        <h3>Care navigation</h3>
+        <p>We help you understand your diagnosis, treatment options, and next steps, so you walk into every appointment prepared.</p>
+      </article>
+      <article class="service-card">
+        <h3>Second opinions</h3>
+        <p>Facing a major procedure or diagnosis? We connect you with the right specialist for an independent, unhurried review.</p>
+      </article>
+      <article class="service-card">
+        <h3>Health plan guidance</h3>
+        <p>We help you compare and choose health insurance and hospital plans that actually fit your family's needs and budget.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="consultation" class="consultation wrap reveal">
+    <div class="consultation-intro">
+      <p class="eyebrow">Start here</p>
+      <h2>Request a consultation</h2>
+      <p>Share a few details and our advisory team will reach out within one business day.</p>
+    </div>
+
+    <form id="consultation-form" class="intake-form" novalidate>
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" autocomplete="name" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required />
+      </div>
+
+      <div class="field field-full">
+        <label for="organization">Organization <span class="optional">(optional)</span></label>
+        <input type="text" id="organization" name="organization" autocomplete="organization" />
+      </div>
+
+      <div class="field field-full">
+        <label for="request">Request</label>
+        <textarea id="request" name="request" rows="4" placeholder="Tell us what you'd like help with — a consultation, a second opinion, health plan guidance, or anything else." required></textarea>
+      </div>
+
+      <div class="field field-full form-actions">
+        <button type="submit" class="btn btn-primary" id="submitBtn">Send request</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="brand-footer">STACKEDHQ <span>Health Advisory</span></p>
+    <p class="footer-meta">Lagos, Nigeria · hello@stackedhq.example · +234 000 000 0000</p>
+    <p class="footer-copy">© <span id="year"></span> STACKEDHQ Health Advisory. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
