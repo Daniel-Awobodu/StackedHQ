@@ -73,11 +73,13 @@
       <div class="field">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" autocomplete="name" required />
+        <p class="field-error">Please enter your name.</p>
       </div>
 
       <div class="field">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" autocomplete="email" required />
+        <p class="field-error">That email address doesn't look complete.</p>
       </div>
 
       <div class="field field-full">
@@ -88,6 +90,13 @@
       <div class="field field-full">
         <label for="request">Request</label>
         <textarea id="request" name="request" rows="4" placeholder="Tell us what you'd like help with — a consultation, a second opinion, health plan guidance, or anything else." required></textarea>
+        <p class="field-error">Please give us at least a sentence or two.</p>
+      </div>
+
+      <!-- Honeypot. Hidden from people, filled in by bots. Must stay empty. -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="hp">Leave this field empty</label>
+        <input type="text" id="hp" name="hp" tabindex="-1" autocomplete="off" />
       </div>
 
       <div class="field field-full form-actions">
@@ -95,6 +104,15 @@
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
       </div>
     </form>
+
+    <section class="receipt" id="receipt" aria-live="polite">
+      <div class="receipt-head">Request received</div>
+      <div class="receipt-body">
+        <p class="receipt-code" id="receiptCode">—</p>
+        <p class="receipt-save">Please save this code. Quote it in any follow-up about this request.</p>
+        <p>An advisor will be in touch within one business day.</p>
+      </div>
+    </section>
   </section>
 
 </main>
