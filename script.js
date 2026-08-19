@@ -18,6 +18,9 @@ const submitBtn = document.getElementById("submitBtn");
 const statusEl = document.getElementById("formStatus");
 const receipt = document.getElementById("receipt");
 const receiptCode = document.getElementById("receiptCode");
+const receiptCodeText = document.getElementById("receiptCodeText");
+const copyHint = document.getElementById("copyHint");
+const copyLive = document.getElementById("copyLive");
 
 /* ---- Reference code ------------------------------------------------
    Made in the browser, sent with the request, and shown back to the
@@ -96,7 +99,7 @@ form.addEventListener("submit", async (event) => {
       throw new Error("Webhook responded with status " + response.status);
     }
 
-    receiptCode.textContent = reference;
+    receiptCodeText.textContent = reference;
     form.style.display = "none";
     receipt.classList.add("is-visible");
     receipt.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -112,6 +115,58 @@ form.addEventListener("submit", async (event) => {
   } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = "Send request";
+  }
+});
+
+/* ---- Click to copy -------------------------------------------------
+   navigator.clipboard needs a secure context (https or localhost). It
+   will not exist when the page is opened straight off the filesystem,
+   so there is a fallback that still works there.
+   -------------------------------------------------------------------- */
+function legacyCopy(text) {
+  const box = document.createElement("textarea");
+  box.value = text;
+  box.setAttribute("readonly", "");
+  box.style.position = "absolute";
+  box.style.left = "-9999px";
+  document.body.appendChild(box);
+  box.select();
+  let ok = false;
+  try {
+    ok = document.execCommand("copy");
+  } catch (err) {
+    ok = false;
+  }
+  document.body.removeChild(box);
+  return ok;
+}
+
+function showCopied(ok) {
+  if (ok) {
+    copyHint.textContent = "Copied";
+    copyLive.textContent = "Reference code copied to your clipboard.";
+    receiptCode.classList.add("is-copied");
+    setTimeout(function () {
+      copyHint.textContent = "Copy";
+      copyLive.textContent = "";
+      receiptCode.classList.remove("is-copied");
+    }, 2200);
+  } else {
+    copyLive.textContent = "Couldn't copy automatically — please select the code and copy it.";
+  }
+}
+
+receiptCode.addEventListener("click", function () {
+  const code = receiptCodeText.textContent.trim();
+  if (!code || code === "\u2014") return;
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(code).then(
+      function () { showCopied(true); },
+      function () { showCopied(legacyCopy(code)); }
+    );
+  } else {
+    showCopied(legacyCopy(code));
   }
 });
 

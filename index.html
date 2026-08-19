@@ -108,7 +108,11 @@
     <section class="receipt" id="receipt" aria-live="polite">
       <div class="receipt-head">Request received</div>
       <div class="receipt-body">
-        <p class="receipt-code" id="receiptCode">—</p>
+        <button type="button" class="receipt-code" id="receiptCode" title="Click to copy">
+          <span id="receiptCodeText">—</span>
+          <span class="copy-hint" id="copyHint" aria-hidden="true">Copy</span>
+        </button>
+        <p class="copy-live" id="copyLive" role="status" aria-live="polite"></p>
         <p class="receipt-save">Please save this code. Quote it in any follow-up about this request.</p>
         <p>An advisor will be in touch within one business day.</p>
       </div>
